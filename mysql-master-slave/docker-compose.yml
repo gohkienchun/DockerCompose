@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  masterdb:
+    image: mysql:latest
+    ports:
+      - "23306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/timezone:/etc/timezone:ro"
