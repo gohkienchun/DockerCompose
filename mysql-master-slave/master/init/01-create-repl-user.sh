@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+mysql --protocol=socket -uroot -p"${MYSQL_ROOT_PASSWORD}" <<SQL
+CREATE USER IF NOT EXISTS '${REPL_USER}'@'%' IDENTIFIED BY '${REPL_PASSWORD}';
+GRANT REPLICATION SLAVE ON *.* TO '${REPL_USER}'@'%';
+FLUSH PRIVILEGES;
+SQL
